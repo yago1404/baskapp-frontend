@@ -8,7 +8,7 @@ class HttpService {
 
   HttpService({required Dio dio}) {
     _dio = dio;
-    _dio.options.baseUrl = "http://10.0.2.2:3000";
+    _dio.options.baseUrl = 'http://10.0.2.2:8080';
     _dio.interceptors.addAll([
       AuthInterceptor(),
       LogInterceptor(
@@ -34,8 +34,8 @@ class HttpService {
     } on DioException catch (e) {
       throw RestClientError(
         statusCode: e.response!.statusCode!,
-        message: e.response?.data["data"]["message"],
-        data: e.response?.data["data"],
+        message: e.response?.data['message'],
+        data: e.response?.data,
       );
     }
   }
@@ -56,8 +56,8 @@ class HttpService {
     } on DioException catch (e) {
       throw RestClientError(
         statusCode: e.response!.statusCode!,
-        message: e.response?.data["data"]["message"],
-        data: e.response?.data["data"],
+        message: e.response?.data['message'],
+        data: e.response?.data,
       );
     }
   }
@@ -78,8 +78,8 @@ class HttpService {
     } on DioException catch (e) {
       throw RestClientError(
         statusCode: e.response!.statusCode!,
-        message: e.response?.data["data"]["message"],
-        data: e.response?.data["data"],
+        message: e.response?.data['message'],
+        data: e.response?.data,
       );
     }
   }
@@ -100,8 +100,8 @@ class HttpService {
     } on DioException catch (e) {
       throw RestClientError(
         statusCode: e.response!.statusCode!,
-        message: e.response?.data["data"]["message"],
-        data: e.response?.data["data"],
+        message: e.response?.data['message'],
+        data: e.response?.data,
       );
     }
   }
