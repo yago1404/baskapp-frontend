@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.17
+  dio: ^5.8.0+1
+  shared_preferences: ^2.5.2
   module_navigator:
     git:
       url: https://github.com/yago1404/module_navigator
