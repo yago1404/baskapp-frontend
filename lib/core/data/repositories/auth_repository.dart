@@ -1,3 +1,6 @@
+import 'package:baskapp/core/data/models/dtos/do_login_dto.dart';
+import 'package:baskapp/core/statics/app_api_routes.dart';
+
 import '../models/auth_model.dart';
 import '../services/http_service.dart';
 
@@ -6,13 +9,10 @@ class AuthRepository {
 
   const AuthRepository({required this.service});
 
-  Future<AuthModel> doLogin({
-    required String email,
-    required String password,
-  }) async {
+  Future<AuthModel> doLogin(DoLoginDto dto) async {
     Map<String, dynamic> response = await service.post(
-      '/user/login',
-      data: {'email': email, 'password': password},
+      AppApiRoutes.login,
+      data: dto.toJson,
     );
 
     return AuthModel.fromJson(response['data']);
