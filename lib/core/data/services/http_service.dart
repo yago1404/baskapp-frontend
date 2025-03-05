@@ -5,10 +5,10 @@ import 'interceptors/auth_interceptor.dart';
 
 class HttpService {
   late final Dio _dio;
-  final String _baseUrl = "http://10.0.2.2:3000";
 
   HttpService({required Dio dio}) {
     _dio = dio;
+    _dio.options.baseUrl = "http://10.0.2.2:3000";
     _dio.interceptors.addAll([
       AuthInterceptor(),
       LogInterceptor(
@@ -21,12 +21,12 @@ class HttpService {
   }
 
   Future<Map<String, dynamic>> get(
-      String path, {
-        Map<String, String>? headers,
-      }) async {
+    String path, {
+    Map<String, String>? headers,
+  }) async {
     try {
       Response response = await _dio.get(
-        _baseUrl + path,
+        path,
         options: Options(headers: headers),
       );
 
@@ -41,13 +41,13 @@ class HttpService {
   }
 
   Future<Map<String, dynamic>> post(
-      String path, {
-        Map<String, dynamic>? data,
-        Map<String, String>? headers,
-      }) async {
+    String path, {
+    Map<String, dynamic>? data,
+    Map<String, String>? headers,
+  }) async {
     try {
       Response response = await _dio.post(
-        _baseUrl + path,
+        path,
         data: data,
         options: Options(headers: headers),
       );
@@ -63,13 +63,13 @@ class HttpService {
   }
 
   Future<Map<String, dynamic>> put(
-      String path, {
-        Map<String, dynamic>? data,
-        Map<String, String>? headers,
-      }) async {
+    String path, {
+    Map<String, dynamic>? data,
+    Map<String, String>? headers,
+  }) async {
     try {
       Response response = await _dio.put(
-        _baseUrl + path,
+        path,
         data: data,
         options: Options(headers: headers),
       );
@@ -85,13 +85,13 @@ class HttpService {
   }
 
   Future<Map<String, dynamic>> delete(
-      String path, {
-        Map<String, dynamic>? data,
-        Map<String, String>? headers,
-      }) async {
+    String path, {
+    Map<String, dynamic>? data,
+    Map<String, String>? headers,
+  }) async {
     try {
       Response response = await _dio.delete(
-        _baseUrl + path,
+        path,
         data: data,
         options: Options(headers: headers),
       );
