@@ -1,5 +1,6 @@
 import 'package:baskapp/core/data/models/errors/rest_client_error.dart';
 import 'package:baskapp/core/data/repositories/auth_repository.dart';
+import 'package:baskapp/core/data/storage/app_disk_storage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/data/models/auth_model.dart';
@@ -16,9 +17,16 @@ class LoginViewModel {
     loginState.value = LoadingLoginState();
     try {
       AuthModel model = await repository.doLogin(email: email, password: password);
+      AppDiskStorage.instance.setItem('authToken', model.token);
+      AppDiskStorage.instance.setItem('refreshToken', model.refreshToken);
+
+      loginState.value = InitialLoginState();
     } on RestClientError catch (e) {
-      // TODO
+      loginState.value = ErrorLoginState(e.message);
     }
+  }
+
+  void clearState() {
     loginState.value = InitialLoginState();
   }
 }

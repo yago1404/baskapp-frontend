@@ -54,6 +54,14 @@ class _LoginPageState extends State<LoginPage> {
                           'Faça login ou cadastre-se',
                           color: BaskappColors.grey,
                         ),
+                        if (state is ErrorLoginState) ...[
+                          SizedBox(height: BaskappSizes.common),
+                          BaskappMessageCard.error(
+                            state.message,
+                            onTapClose: widget.viewModel.clearState,
+                          ),
+                          SizedBox(height: BaskappSizes.common),
+                        ],
                         SizedBox(height: BaskappSizes.common),
                         BaskappInputText(
                           controller: _emailController,

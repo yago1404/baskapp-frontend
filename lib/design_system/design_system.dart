@@ -11,6 +11,7 @@ export 'atoms/baskapp_images.dart';
 // MOLECULES
 export 'molecules/baskapp_input_text.dart';
 export 'molecules/baskapp_button.dart';
+export 'molecules/baskapp_message_card.dart';
 
 // ORGANISMS
 
