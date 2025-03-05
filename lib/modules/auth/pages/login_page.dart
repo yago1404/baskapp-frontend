@@ -16,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Row(
         children: [
           Flexible(
@@ -28,6 +29,12 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: BaskappImages.appLogo.asWidget,
+                  ),
+                  SizedBox(height: BaskappSizes.common),
                   BaskappText.titleLarge('Login', fontWeight: FontWeight.bold),
                   BaskappText.bodyMedium(
                     'Faça login ou cadastre-se',
@@ -54,9 +61,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () => {
-                      // TODO: abre fluxo de recuperar senha
-                    },
+                    onTap:
+                        () => {
+                          // TODO: abre fluxo de recuperar senha
+                        },
                     child: BaskappText.bodySmall(
                       'Esqueceu sua senha?',
                       color: BaskappColors.primary,
@@ -74,7 +82,45 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          Flexible(flex: 3, child: Container(color: Colors.green)),
+          Flexible(
+            flex: 3,
+            child: Padding(
+              padding: EdgeInsets.all(BaskappSizes.medium),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(
+                    image: BaskappImages.playerBg.asImageProvider,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(BaskappSizes.large),
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BaskappText.displayLarge(
+                              'Baskapp',
+                              color: BaskappColors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            BaskappText.titleLarge(
+                              'Monitore estatisticas, crie metas e acompanhe a evolução dos seus atletas',
+                              color: BaskappColors.grey,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
