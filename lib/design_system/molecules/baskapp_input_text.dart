@@ -9,6 +9,7 @@ class BaskappInputText extends StatelessWidget {
   final bool? disabled;
   final bool? hide;
   final Widget? trailingIcon;
+  final FormFieldValidator<String>? validator;
 
   const BaskappInputText({
     super.key,
@@ -18,6 +19,7 @@ class BaskappInputText extends StatelessWidget {
     this.disabled,
     this.hide,
     this.trailingIcon,
+    this.validator
   });
 
   @override
@@ -26,6 +28,7 @@ class BaskappInputText extends StatelessWidget {
       controller: controller,
       enabled: disabled ?? true,
       obscureText: hide ?? false,
+      validator: validator,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(BaskappSizes.small),

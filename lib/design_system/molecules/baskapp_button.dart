@@ -6,6 +6,7 @@ class BaskappButton extends StatelessWidget {
   final String text;
   final bool disabled;
   final bool expanded;
+  final bool isLoading;
   final Color _backgroundColor;
   final Color _fontColor;
 
@@ -15,6 +16,7 @@ class BaskappButton extends StatelessWidget {
     required this.onPressed,
     this.disabled = false,
     this.expanded = false,
+    this.isLoading = false,
   }) : _backgroundColor = BaskappColors.primary,
        _fontColor = BaskappColors.white;
 
@@ -24,6 +26,7 @@ class BaskappButton extends StatelessWidget {
     required this.onPressed,
     this.disabled = false,
     this.expanded = false,
+    this.isLoading = false,
   }) : _backgroundColor = Colors.transparent,
        _fontColor = BaskappColors.primary;
 
@@ -32,7 +35,7 @@ class BaskappButton extends StatelessWidget {
     return SizedBox(
       width: expanded ? double.infinity : null,
       child: ElevatedButton(
-        onPressed: disabled ? null : onPressed,
+        onPressed: _getOnPressed(),
         style: ButtonStyle(
           backgroundColor: WidgetStatePropertyAll(_backgroundColor),
           elevation: WidgetStatePropertyAll(0),
@@ -46,8 +49,21 @@ class BaskappButton extends StatelessWidget {
             ),
           ),
         ),
-        child: BaskappText.bodyMedium(text, color: _fontColor),
+        child:
+            isLoading
+                ? SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(),
+                )
+                : BaskappText.bodyMedium(text, color: _fontColor),
       ),
     );
+  }
+
+  VoidCallback? _getOnPressed() {
+    if (disabled) return null;
+    if (isLoading) return () {};
+    return onPressed;
   }
 }

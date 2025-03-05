@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         AuthModule(),
       ],
       materialApp: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: AppTexts.appTitle,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: BaskappColors.primary),
