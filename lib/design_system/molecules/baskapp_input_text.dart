@@ -7,6 +7,8 @@ class BaskappInputText extends StatelessWidget {
   final String? hintText;
   final String? label;
   final bool? disabled;
+  final bool? hide;
+  final Widget? trailingIcon;
 
   const BaskappInputText({
     super.key,
@@ -14,6 +16,8 @@ class BaskappInputText extends StatelessWidget {
     this.hintText,
     this.label,
     this.disabled,
+    this.hide,
+    this.trailingIcon,
   });
 
   @override
@@ -21,10 +25,12 @@ class BaskappInputText extends StatelessWidget {
     return TextFormField(
       controller: controller,
       enabled: disabled ?? true,
+      obscureText: hide ?? false,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(BaskappSizes.small),
         ),
+        suffixIcon: trailingIcon,
         contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         hintText: hintText,
         label: label != null ? BaskappText.bodyMedium(label!) : null,
