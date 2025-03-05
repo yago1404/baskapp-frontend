@@ -44,13 +44,31 @@ class _LoginPageState extends State<LoginPage> {
                     hide: _hidePassword,
                     label: 'Senha',
                     trailingIcon: InkWell(
-                      onTap: () => setState(() {
-                        _hidePassword = !_hidePassword;
-                      }),
+                      onTap:
+                          () => setState(() {
+                            _hidePassword = !_hidePassword;
+                          }),
                       child: Icon(
                         _hidePassword ? Icons.visibility : Icons.visibility_off,
                       ),
                     ),
+                  ),
+                  GestureDetector(
+                    onTap: () => {
+                      // TODO: abre fluxo de recuperar senha
+                    },
+                    child: BaskappText.bodySmall(
+                      'Esqueceu sua senha?',
+                      color: BaskappColors.primary,
+                    ),
+                  ),
+                  SizedBox(height: BaskappSizes.common),
+                  BaskappButton('Entrar', onPressed: () {}, expanded: true),
+                  SizedBox(height: BaskappSizes.small),
+                  BaskappButton.secondary(
+                    'Cadastre-se',
+                    onPressed: () {},
+                    expanded: true,
                   ),
                 ],
               ),
