@@ -67,10 +67,11 @@ class _LoginPageState extends State<LoginPage> {
                           label: 'Senha',
                           validator: ValidatorsUtil.noEmptyValidator,
                           trailingIcon: InkWell(
-                            onTap:
-                                () => setState(() {
-                                  _hidePassword = !_hidePassword;
-                                }),
+                            onTap: () {
+                              setState(() {
+                                _hidePassword = !_hidePassword;
+                              });
+                            },
                             child: Icon(
                               _hidePassword
                                   ? Icons.visibility
@@ -79,10 +80,9 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         GestureDetector(
-                          onTap:
-                              () => {
-                                // TODO: abre fluxo de recuperar senha
-                              },
+                          onTap: () {
+                            // TODO: abre fluxo de recuperar senha
+                          },
                           child: BaskappText.bodySmall(
                             'Esqueceu sua senha?',
                             color: BaskappColors.primary,
