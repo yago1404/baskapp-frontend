@@ -1,3 +1,3 @@
-abstract class AppApiRoutes {
+abstract class ApiRoutes {
   static String get login => '/user/login';
 }

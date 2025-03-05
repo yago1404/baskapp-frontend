@@ -1,5 +1,5 @@
 import 'package:baskapp/core/data/models/dtos/do_login_dto.dart';
-import 'package:baskapp/core/statics/app_api_routes.dart';
+import 'package:baskapp/core/statics/api_routes.dart';
 
 import '../models/auth_model.dart';
 import '../services/http_service.dart';
@@ -11,7 +11,7 @@ class AuthRepository {
 
   Future<AuthModel> doLogin(DoLoginDto dto) async {
     Map<String, dynamic> response = await service.post(
-      AppApiRoutes.login,
+      ApiRoutes.login,
       data: dto.toJson,
     );
 
