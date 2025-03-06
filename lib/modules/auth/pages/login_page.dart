@@ -1,4 +1,5 @@
 import 'package:baskapp/core/data/models/dtos/do_login_dto.dart';
+import 'package:baskapp/core/statics/app_routes.dart';
 import 'package:baskapp/core/utils/validators_util.dart';
 import 'package:baskapp/design_system/design_system.dart';
 import 'package:baskapp/modules/auth/states/login_states.dart';
@@ -169,10 +170,15 @@ class _LoginPageState extends State<LoginPage> {
   void _onPressedLogin() async {
     if (!_formState.currentState!.validate()) return;
     await widget.viewModel.doLogin(
-      DoLoginDto(
+      dto: DoLoginDto(
         email: _emailController.text,
         password: _passwordController.text,
       ),
+      onSuccess: () {
+        Navigator.of(
+          context,
+        ).pushNamedAndRemoveUntil(AppRoutes.home, (_) => false);
+      },
     );
   }
 }

@@ -17,7 +17,7 @@ class LoginViewModel {
     InitialLoginState(),
   );
 
-  Future doLogin(DoLoginDto dto) async {
+  Future doLogin({required DoLoginDto dto, required Function onSuccess}) async {
     loginState.value = LoadingLoginState();
     try {
       AuthModel model = await repository.doLogin(dto);
@@ -29,6 +29,7 @@ class LoginViewModel {
       );
 
       loginState.value = InitialLoginState();
+      onSuccess();
     } on RestClientError catch (e) {
       loginState.value = ErrorLoginState(e.message);
     }
