@@ -1,9 +1,12 @@
+import 'package:baskapp/modules/auth/view_models/create_profile_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../design_system/design_system.dart';
 
 class CreateUserPage extends StatefulWidget {
-  const CreateUserPage({super.key});
+  final CreateProfileViewModel viewModel;
+
+  const CreateUserPage({super.key, required this.viewModel});
 
   @override
   State<CreateUserPage> createState() => _CreateUserPageState();
