@@ -8,7 +8,7 @@ class HttpService {
 
   HttpService({required Dio dio}) {
     _dio = dio;
-    _dio.options.baseUrl = 'http://10.0.2.2:8080';
+    _dio.options.baseUrl = 'http://10.0.2.2:3000';
     _dio.interceptors.addAll([
       AuthInterceptor(),
       LogInterceptor(
