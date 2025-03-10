@@ -1,6 +1,8 @@
 import 'package:baskapp/core/data/repositories/auth_repository.dart';
 import 'package:baskapp/core/data/services/http_service.dart';
 import 'package:baskapp/core/statics/app_routes.dart';
+import 'package:baskapp/modules/auth/auth_modules_route.dart';
+import 'package:baskapp/modules/auth/pages/create_user.dart';
 import 'package:baskapp/modules/auth/view_models/login_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:module_navigator/module_navigator.dart';
@@ -26,5 +28,7 @@ class AuthModule implements Module {
   String get moduleRoute => AppRoutes.auth;
 
   @override
-  Map<String, dynamic> get routes => {};
+  Map<String, dynamic> get routes => {
+    AuthModuleRoutes.createUser.path: (_) => CreateUserPage(),
+  };
 }

@@ -2,6 +2,7 @@ import 'package:baskapp/core/data/models/dtos/do_login_dto.dart';
 import 'package:baskapp/core/statics/app_routes.dart';
 import 'package:baskapp/core/utils/validators_util.dart';
 import 'package:baskapp/design_system/design_system.dart';
+import 'package:baskapp/modules/auth/auth_modules_route.dart';
 import 'package:baskapp/modules/auth/states/login_states.dart';
 import 'package:baskapp/modules/auth/view_models/login_view_model.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(height: BaskappSizes.small),
                         BaskappButton.secondary(
                           'Cadastre-se',
-                          onPressed: () {},
+                          onPressed: () => Navigator.of(context).pushNamed(AuthModuleRoutes.createUser.fullPath),
                           expanded: true,
                         ),
                       ],
