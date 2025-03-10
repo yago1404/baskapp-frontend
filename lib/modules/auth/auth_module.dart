@@ -28,7 +28,8 @@ class AuthModule implements Module {
       (context) => LoginViewModel(repository: context.get<AuthRepository>()),
     ),
     Bind<CreateProfileViewModel>(
-      (context) => CreateProfileViewModel(repository: context.get<ProfileRepository>()),
+      (context) =>
+          CreateProfileViewModel(repository: context.get<ProfileRepository>()),
     ),
   ];
 
