@@ -1,3 +1,4 @@
+import 'package:baskapp/design_system/atoms/baskapp_input_mask.dart';
 import 'package:baskapp/design_system/atoms/baskapp_text.dart';
 import 'package:baskapp/design_system/core/baskapp_sizes.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class BaskappInputText extends StatelessWidget {
   final bool? hide;
   final Widget? trailingIcon;
   final FormFieldValidator<String>? validator;
+  final List<BaskappInputMask> masks;
 
   const BaskappInputText({
     super.key,
@@ -19,13 +21,15 @@ class BaskappInputText extends StatelessWidget {
     this.disabled,
     this.hide,
     this.trailingIcon,
-    this.validator
+    this.validator,
+    this.masks = const [],
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      inputFormatters: masks.map((e) => e.asInputFormatter).toList(),
       enabled: disabled ?? true,
       obscureText: hide ?? false,
       validator: validator,
