@@ -143,7 +143,8 @@ class _CreateUserPageState extends State<CreateUserPage> {
                                     Flexible(
                                       child: BaskappInputText(
                                         controller: _birthdayController,
-                                        validator: ValidatorsUtil.validateBirthday,
+                                        validator:
+                                            ValidatorsUtil.validateBirthday,
                                         masks: [
                                           BaskappInputMask(mask: '##/##/####'),
                                         ],
