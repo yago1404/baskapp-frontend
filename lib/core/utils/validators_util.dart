@@ -41,11 +41,15 @@ abstract class ValidatorsUtil {
 
     List<String> dates = value.split('/');
 
+    if (dates.length < 3) {
+      return 'Preencha data com dia/mês/ano';
+    }
+
     String day = dates[0];
     String month = dates[1];
     String year = dates[2];
 
-    if (dates.length != 3 && day.length != 2 && month.length != 2 && year.length != 4) {
+    if (day.length != 2 && month.length != 2 && year.length != 4) {
       return 'Formato de data inválido';
     }
 
