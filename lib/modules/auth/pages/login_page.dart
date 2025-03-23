@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                           controller: _passwordController,
                           hide: _hidePassword,
                           label: 'Senha',
-                          validator: ValidatorsUtil.noEmptyValidator,
+                          validator: ValidatorsUtil.validateNoEmpty,
                           trailingIcon: InkWell(
                             onTap: () {
                               setState(() {
