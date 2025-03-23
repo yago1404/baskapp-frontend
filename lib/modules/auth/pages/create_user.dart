@@ -121,11 +121,13 @@ class _CreateUserPageState extends State<CreateUserPage> {
                                 BaskappInputText(
                                   controller: _passwordController,
                                   validator: ValidatorsUtil.validatePassword,
+                                  hide: true,
                                   label: 'Senha',
                                 ),
                                 BaskappInputText(
                                   controller: _confirmPasswordController,
                                   validator: _validateConfirmationPassword,
+                                  hide: true,
                                   label: 'Confirme sua senha',
                                 ),
                                 SizedBox(height: BaskappSizes.common),
