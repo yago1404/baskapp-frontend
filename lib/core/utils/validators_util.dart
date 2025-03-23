@@ -55,7 +55,7 @@ abstract class ValidatorsUtil {
 
     DateTime date = DateTime.parse('$year-$month-$day');
 
-    if (date.isBefore(DateTime.now())) {
+    if (date.isAfter(DateTime.now())) {
       return 'Data de aniversário deve ser no passado';
     }
 
