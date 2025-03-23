@@ -71,8 +71,12 @@ class _CreateUserPageState extends State<CreateUserPage> {
     return Scaffold(
       backgroundColor: BaskappColors.primary,
       appBar: AppBar(
-        title: BaskappText.titleLarge('Cadastre-se'),
+        title: BaskappText.titleLarge(
+          'Cadastre-se',
+          color: BaskappColors.white,
+        ),
         centerTitle: true,
+        backgroundColor: BaskappColors.primary,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -137,6 +141,9 @@ class _CreateUserPageState extends State<CreateUserPage> {
                                     Flexible(
                                       child: BaskappInputText(
                                         controller: _birthdayController,
+                                        masks: [
+                                          BaskappInputMask(mask: '##/##/####'),
+                                        ],
                                         label: 'Data de nascimento',
                                         hintText: 'DD/MM/AAAA',
                                       ),
@@ -214,9 +221,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
   });
 
   void _onPressedRegister() {
-    if (_formKey.currentState!.validate()) {
-
-    }
+    if (_formKey.currentState!.validate()) {}
   }
 
   String? _validateConfirmationPassword(String? value) {

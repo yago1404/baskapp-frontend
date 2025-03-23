@@ -7,6 +7,7 @@ export 'core/baskapp_sizes.dart';
 export 'atoms/baskapp_colors.dart';
 export 'atoms/baskapp_text.dart';
 export 'atoms/baskapp_images.dart';
+export 'atoms/baskapp_input_mask.dart';
 
 // MOLECULES
 export 'molecules/baskapp_input_text.dart';
