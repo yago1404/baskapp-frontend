@@ -13,7 +13,9 @@ export 'atoms/baskapp_input_mask.dart';
 export 'molecules/baskapp_input_text.dart';
 export 'molecules/baskapp_button.dart';
 export 'molecules/baskapp_message_card.dart';
+export 'molecules/baskapp_dropdown.dart';
 
 // ORGANISMS
+export 'organisms/baskapp_register_form.dart';
 
 // TEMPLATES
