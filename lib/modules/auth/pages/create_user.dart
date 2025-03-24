@@ -174,8 +174,11 @@ class _CreateUserPageState extends State<CreateUserPage> {
                                           controller: _heightController,
                                           validator:
                                               ValidatorsUtil.validateHeight,
+                                          masks: [
+                                            BaskappInputMask(mask: '#,##'),
+                                          ],
                                           hintText: 'Ex.: 1,85',
-                                          label: 'Altura',
+                                          label: 'Altura em metros',
                                         ),
                                       ),
                                       Flexible(

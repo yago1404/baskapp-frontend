@@ -75,7 +75,7 @@ abstract class ValidatorsUtil {
     if (height[0].length != 1 || height[1].length > 2) return 'A altura deve ser composta por metros e centimetros';
 
     if (!RegExp(r'^[0-2]$').hasMatch(height[0])) return 'A unidade de metros deve ser entre 0 e 2';
-    if (!RegExp(r'^[0-99]$').hasMatch(height[0])) return 'A unidade de centimetros deve ser entre 0 e 99';
+    if (!RegExp(r'^(?:[1-9]?[0-9])$').hasMatch(height[1])) return 'A unidade de centimetros deve ser entre 0 e 99';
 
     return null;
   }

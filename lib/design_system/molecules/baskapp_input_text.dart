@@ -41,6 +41,7 @@ class BaskappInputText extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         hintText: hintText,
         label: label != null ? BaskappText.bodyMedium(label!) : null,
+        errorMaxLines: 2,
       ),
     );
   }
