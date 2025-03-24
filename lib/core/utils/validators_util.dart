@@ -61,4 +61,22 @@ abstract class ValidatorsUtil {
 
     return null;
   }
+
+  static String? validateHeight(String? value, [bool? optional]) {
+    if (value == null || value.isEmpty) {
+      if (optional ?? false) return null;
+      return 'Altura é obrigatório';
+    }
+
+    if (!value.contains(',')) return 'A altura deve ser composta por virgula';
+
+    List<String> height = value.trim().split(',');
+
+    if (height[0].length != 1 || height[1].length > 2) return 'A altura deve ser composta por metros e centimetros';
+
+    if (!RegExp(r'^[0-2]$').hasMatch(height[0])) return 'A unidade de metros deve ser entre 0 e 2';
+    if (!RegExp(r'^[0-99]$').hasMatch(height[0])) return 'A unidade de centimetros deve ser entre 0 e 99';
+
+    return null;
+  }
 }

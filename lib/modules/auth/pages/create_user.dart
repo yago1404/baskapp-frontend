@@ -172,6 +172,8 @@ class _CreateUserPageState extends State<CreateUserPage> {
                                         flex: 1,
                                         child: BaskappInputText(
                                           controller: _heightController,
+                                          validator:
+                                              ValidatorsUtil.validateHeight,
                                           hintText: 'Ex.: 1,85',
                                           label: 'Altura',
                                         ),
