@@ -79,4 +79,15 @@ abstract class ValidatorsUtil {
 
     return null;
   }
+
+  static String? validateCellphone(String? value, [bool? optional]) {
+    if (value == null || value.isEmpty) {
+      if (optional ?? false) return null;
+      return 'Telefone é obrigatório';
+    }
+
+    if (!RegExp(r'^\(\d{2}\) 9 \d{4}-\d{4}$').hasMatch(value)) return 'Número de telefone inválido';
+
+    return null;
+  }
 }
