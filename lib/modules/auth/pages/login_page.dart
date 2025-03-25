@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                   formState: _formState,
                   onTapCloseErrorMessage: widget.viewModel.clearState,
                   onPressedLogin: _onPressedLogin,
-                  onPressedRegister: () => Navigator.of(context).pushNamed(AuthModuleRoutes.createUser.fullPath),
+                  onPressedRegister: _onPressedRegister,
                   onPressedRecoveryPassword: () => {},
                   isLoading: state is LoadingLoginState,
                   errorMessage: state is ErrorLoginState ? state.message : null,
@@ -104,4 +104,7 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
   }
+
+  void _onPressedRegister() =>
+      Navigator.of(context).pushNamed(AuthModuleRoutes.createUser.fullPath);
 }
