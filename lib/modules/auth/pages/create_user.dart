@@ -22,7 +22,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
       appBar: AppBar(
         title: BaskappText.titleLarge(
           'Cadastre-se',
-          color: BaskappColors.white,
+          color: BaskappColors.lightGrey,
         ),
         centerTitle: true,
         backgroundColor: BaskappColors.primary,
@@ -38,7 +38,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: BaskappColors.white,
+                  color: BaskappColors.lightGrey,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: EdgeInsets.all(BaskappSizes.medium),

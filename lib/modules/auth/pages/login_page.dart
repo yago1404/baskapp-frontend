@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                                 children: [
                                   BaskappText.displayLarge(
                                     'Baskapp',
-                                    color: BaskappColors.white,
+                                    color: BaskappColors.lightGrey,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   BaskappText.titleLarge(

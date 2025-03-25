@@ -18,7 +18,7 @@ class BaskappButton extends StatelessWidget {
     this.expanded = false,
     this.isLoading = false,
   }) : _backgroundColor = BaskappColors.primary,
-       _fontColor = BaskappColors.white;
+       _fontColor = BaskappColors.lightGrey;
 
   const BaskappButton.secondary(
     this.text, {

@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
         title: AppTexts.appTitle,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: BaskappColors.primary),
-          scaffoldBackgroundColor: BaskappColors.white,
-          appBarTheme: AppBarTheme(backgroundColor: BaskappColors.white),
+          scaffoldBackgroundColor: BaskappColors.lightGrey,
+          appBarTheme: AppBarTheme(backgroundColor: BaskappColors.lightGrey),
         ),
         initialRoute: AppRoutes.auth,
       ),

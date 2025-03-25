@@ -12,17 +12,17 @@ class BaskappMessageCard extends StatelessWidget {
 
   const BaskappMessageCard(this.message, {super.key, this.onTapClose})
     : _backgroundColor = BaskappColors.primary,
-      _textColor = BaskappColors.white,
+      _textColor = BaskappColors.lightGrey,
       _borderColor = BaskappColors.primary;
 
   const BaskappMessageCard.warning(this.message, {super.key, this.onTapClose})
     : _backgroundColor = BaskappColors.warning,
-      _textColor = BaskappColors.white,
+      _textColor = BaskappColors.lightGrey,
       _borderColor = BaskappColors.warning;
 
   const BaskappMessageCard.error(this.message, {super.key, this.onTapClose})
     : _backgroundColor = BaskappColors.error,
-      _textColor = BaskappColors.white,
+      _textColor = BaskappColors.lightGrey,
       _borderColor = BaskappColors.error;
 
   @override
