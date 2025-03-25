@@ -1,5 +1,6 @@
 import 'package:baskapp/core/data/models/dtos/do_login_dto.dart';
 import 'package:baskapp/core/statics/app_routes.dart';
+import 'package:baskapp/design_system/atoms/baskapp_breakpoint.dart';
 import 'package:baskapp/design_system/design_system.dart';
 import 'package:baskapp/modules/auth/auth_modules_route.dart';
 import 'package:baskapp/modules/auth/states/login_states.dart';
@@ -25,65 +26,86 @@ class _LoginPageState extends State<LoginPage> {
       body: ValueListenableBuilder(
         valueListenable: widget.viewModel.loginState,
         builder: (context, state, _) {
-          return Row(
-            children: [
-              Flexible(
-                flex: 2,
-                child: BaskappLoginForm(
-                  formState: _formState,
-                  onTapCloseErrorMessage: widget.viewModel.clearState,
-                  onPressedLogin: _onPressedLogin,
-                  onPressedRegister: _onPressedRegister,
-                  onPressedRecoveryPassword: () => {},
-                  isLoading: state is LoadingLoginState,
-                  errorMessage: state is ErrorLoginState ? state.message : null,
-                ),
-              ),
-              Flexible(
-                flex: 3,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    0,
-                    BaskappSizes.medium,
-                    BaskappSizes.medium,
-                    BaskappSizes.medium,
+          return BaskappBreakpoint(
+            tablets: Row(
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: BaskappLoginForm(
+                    formState: _formState,
+                    onTapCloseErrorMessage: widget.viewModel.clearState,
+                    onPressedLogin: _onPressedLogin,
+                    onPressedRegister: _onPressedRegister,
+                    onPressedRecoveryPassword: () => {},
+                    isLoading: state is LoadingLoginState,
+                    errorMessage:
+                        state is ErrorLoginState ? state.message : null,
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      image: DecorationImage(
-                        image: BaskappImages.playerBg.asImageProvider,
-                        fit: BoxFit.fitWidth,
-                      ),
+                ),
+                Flexible(
+                  flex: 3,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      0,
+                      BaskappSizes.medium,
+                      BaskappSizes.medium,
+                      BaskappSizes.medium,
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.all(BaskappSizes.large),
-                      child: Row(
-                        children: [
-                          Flexible(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                BaskappText.displayLarge(
-                                  'Baskapp',
-                                  color: BaskappColors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                BaskappText.titleLarge(
-                                  'Monitore estatisticas, crie metas e acompanhe a evolução dos seus atletas',
-                                  color: BaskappColors.grey,
-                                ),
-                              ],
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        image: DecorationImage(
+                          image: BaskappImages.playerBg.asImageProvider,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(BaskappSizes.large),
+                        child: Row(
+                          children: [
+                            Flexible(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  BaskappText.displayLarge(
+                                    'Baskapp',
+                                    color: BaskappColors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  BaskappText.titleLarge(
+                                    'Monitore estatisticas, crie metas e acompanhe a evolução dos seus atletas',
+                                    color: BaskappColors.grey,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
+            cellphone: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  constraints: BoxConstraints(maxWidth: 500),
+                  child: BaskappLoginForm(
+                    formState: _formState,
+                    onTapCloseErrorMessage: widget.viewModel.clearState,
+                    onPressedLogin: _onPressedLogin,
+                    onPressedRegister: _onPressedRegister,
+                    onPressedRecoveryPassword: () => {},
+                    isLoading: state is LoadingLoginState,
+                    errorMessage:
+                        state is ErrorLoginState ? state.message : null,
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),
