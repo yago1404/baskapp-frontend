@@ -1,6 +1,5 @@
 import 'package:baskapp/core/data/models/dtos/do_login_dto.dart';
 import 'package:baskapp/core/statics/app_routes.dart';
-import 'package:baskapp/core/utils/validators_util.dart';
 import 'package:baskapp/design_system/design_system.dart';
 import 'package:baskapp/modules/auth/auth_modules_route.dart';
 import 'package:baskapp/modules/auth/states/login_states.dart';
@@ -17,10 +16,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formState = GlobalKey<FormState>();
-  bool _hidePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -31,90 +27,16 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, state, _) {
           return Row(
             children: [
-              Form(
-                key: _formState,
-                child: Flexible(
-                  flex: 2,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: BaskappSizes.extraLarge,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 40,
-                          height: 40,
-                          child: BaskappImages.appLogo.asWidget,
-                        ),
-                        SizedBox(height: BaskappSizes.common),
-                        BaskappText.titleLarge(
-                          'Login',
-                          fontWeight: FontWeight.bold,
-                        ),
-                        BaskappText.bodyMedium(
-                          'Faça login ou cadastre-se',
-                          color: BaskappColors.grey,
-                        ),
-                        if (state is ErrorLoginState) ...[
-                          SizedBox(height: BaskappSizes.common),
-                          BaskappMessageCard.error(
-                            state.message,
-                            onTapClose: widget.viewModel.clearState,
-                          ),
-                          SizedBox(height: BaskappSizes.common),
-                        ],
-                        SizedBox(height: BaskappSizes.common),
-                        BaskappInputText(
-                          controller: _emailController,
-                          label: 'Email',
-                          validator: ValidatorsUtil.validateEmail,
-                        ),
-                        SizedBox(height: BaskappSizes.small),
-                        BaskappInputText(
-                          controller: _passwordController,
-                          hide: _hidePassword,
-                          label: 'Senha',
-                          validator: ValidatorsUtil.validateNoEmpty,
-                          trailingIcon: InkWell(
-                            onTap: () {
-                              setState(() {
-                                _hidePassword = !_hidePassword;
-                              });
-                            },
-                            child: Icon(
-                              _hidePassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            // TODO: abre fluxo de recuperar senha
-                          },
-                          child: BaskappText.bodySmall(
-                            'Esqueceu sua senha?',
-                            color: BaskappColors.primary,
-                          ),
-                        ),
-                        SizedBox(height: BaskappSizes.common),
-                        BaskappButton(
-                          'Entrar',
-                          onPressed: _onPressedLogin,
-                          expanded: true,
-                          isLoading: state is LoadingLoginState,
-                        ),
-                        SizedBox(height: BaskappSizes.small),
-                        BaskappButton.secondary(
-                          'Cadastre-se',
-                          onPressed: () => Navigator.of(context).pushNamed(AuthModuleRoutes.createUser.fullPath),
-                          expanded: true,
-                        ),
-                      ],
-                    ),
-                  ),
+              Flexible(
+                flex: 2,
+                child: BaskappLoginForm(
+                  formState: _formState,
+                  onTapCloseErrorMessage: widget.viewModel.clearState,
+                  onPressedLogin: _onPressedLogin,
+                  onPressedRegister: () => Navigator.of(context).pushNamed(AuthModuleRoutes.createUser.fullPath),
+                  onPressedRecoveryPassword: () => {},
+                  isLoading: state is LoadingLoginState,
+                  errorMessage: state is ErrorLoginState ? state.message : null,
                 ),
               ),
               Flexible(
@@ -168,13 +90,13 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _onPressedLogin() async {
+  void _onPressedLogin({
+    required String email,
+    required String password,
+  }) async {
     if (!_formState.currentState!.validate()) return;
     await widget.viewModel.doLogin(
-      dto: DoLoginDto(
-        email: _emailController.text,
-        password: _passwordController.text,
-      ),
+      dto: DoLoginDto(email: email, password: password),
       onSuccess: () {
         Navigator.of(
           context,
