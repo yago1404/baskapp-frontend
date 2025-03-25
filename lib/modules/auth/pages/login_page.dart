@@ -91,17 +91,19 @@ class _LoginPageState extends State<LoginPage> {
             cellphone: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  constraints: BoxConstraints(maxWidth: 500),
-                  child: BaskappLoginForm(
-                    formState: _formState,
-                    onTapCloseErrorMessage: widget.viewModel.clearState,
-                    onPressedLogin: _onPressedLogin,
-                    onPressedRegister: _onPressedRegister,
-                    onPressedRecoveryPassword: () => {},
-                    isLoading: state is LoadingLoginState,
-                    errorMessage:
-                        state is ErrorLoginState ? state.message : null,
+                Flexible(
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 600),
+                    child: BaskappLoginForm(
+                      formState: _formState,
+                      onTapCloseErrorMessage: widget.viewModel.clearState,
+                      onPressedLogin: _onPressedLogin,
+                      onPressedRegister: _onPressedRegister,
+                      onPressedRecoveryPassword: () => {},
+                      isLoading: state is LoadingLoginState,
+                      errorMessage:
+                          state is ErrorLoginState ? state.message : null,
+                    ),
                   ),
                 ),
               ],
