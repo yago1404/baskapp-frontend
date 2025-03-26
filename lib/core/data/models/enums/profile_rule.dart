@@ -13,9 +13,7 @@ enum ProfileRule {
         return 'Administrador';
     }
   }
-}
 
-extension ProfileRuleExtension on ProfileRule {
   static ProfileRule fromJson(String value) {
     return ProfileRule.values.firstWhere(
       (e) => e.name.toUpperCase() == value.replaceAll('_', '').toUpperCase(),

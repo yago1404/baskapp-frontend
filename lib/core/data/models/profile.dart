@@ -13,16 +13,17 @@ class Profile {
   String? picture;
   bool? open;
 
-  Profile(
-      {this.id,
-        this.name,
-        this.cellphone,
-        this.birthday,
-        this.height,
-        this.position,
-        this.rule,
-        this.picture,
-        this.open});
+  Profile({
+    this.id,
+    this.name,
+    this.cellphone,
+    this.birthday,
+    this.height,
+    this.position,
+    this.rule,
+    this.picture,
+    this.open,
+  });
 
   Profile.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -30,8 +31,14 @@ class Profile {
     cellphone = json['cellphone'];
     birthday = DateTime.parse(json['birthday']);
     height = json['height'];
-    position = json['position'] != null ? PositionExtension.fromJson(json['position']) : null;
-    rule = json['rule'] != null ? ProfileRuleExtension.fromJson(json['profile']) : null;
+    position =
+        json['position'] != null
+            ? Position.fromJson(json['position'])
+            : null;
+    rule =
+        json['rule'] != null
+            ? ProfileRule.fromJson(json['rule'])
+            : null;
     picture = json['picture'];
     open = json['open'];
   }

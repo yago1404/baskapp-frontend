@@ -19,9 +19,7 @@ enum Position {
         return 'Pivo';
     }
   }
-}
 
-extension PositionExtension on Position {
   static Position fromJson(String value) {
     return Position.values.firstWhere(
       (e) => e.name.toUpperCase() == value.replaceAll('_', '').toUpperCase(),

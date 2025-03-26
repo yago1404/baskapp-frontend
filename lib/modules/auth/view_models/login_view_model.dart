@@ -1,6 +1,8 @@
 import 'package:baskapp/core/data/models/dtos/do_login_dto.dart';
 import 'package:baskapp/core/data/models/errors/rest_client_error.dart';
+import 'package:baskapp/core/data/models/profile.dart';
 import 'package:baskapp/core/data/repositories/auth_repository.dart';
+import 'package:baskapp/core/data/repositories/profile_repository.dart';
 import 'package:baskapp/core/data/storage/app_disk_storage.dart';
 import 'package:baskapp/core/statics/app_storage_keys.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +12,9 @@ import '../states/login_states.dart';
 
 class LoginViewModel {
   final AuthRepository repository;
+  final ProfileRepository profileRepository;
 
-  LoginViewModel({required this.repository});
+  LoginViewModel({required this.repository, required this.profileRepository});
 
   final ValueNotifier loginState = ValueNotifier<LoginState>(
     InitialLoginState(),
@@ -27,6 +30,8 @@ class LoginViewModel {
         AppStorageKeys.refreshToken,
         model.refreshToken,
       );
+
+      Profile profile = await profileRepository.getProfile();
 
       loginState.value = InitialLoginState();
       onSuccess();
