@@ -8,13 +8,19 @@ import 'package:baskapp/core/statics/app_storage_keys.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/data/models/auth_model.dart';
+import '../../../core/data/storage/app_store.dart';
 import '../states/login_states.dart';
 
 class LoginViewModel {
   final AuthRepository repository;
   final ProfileRepository profileRepository;
+  final AppStore store;
 
-  LoginViewModel({required this.repository, required this.profileRepository});
+  LoginViewModel({
+    required this.repository,
+    required this.profileRepository,
+    required this.store,
+  });
 
   final ValueNotifier loginState = ValueNotifier<LoginState>(
     InitialLoginState(),
@@ -32,6 +38,7 @@ class LoginViewModel {
       );
 
       Profile profile = await profileRepository.getProfile();
+      store.setProfile = profile;
 
       loginState.value = InitialLoginState();
       onSuccess();

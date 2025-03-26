@@ -6,8 +6,8 @@ import 'interceptors/auth_interceptor.dart';
 class HttpService {
   late final Dio _dio;
 
-  HttpService({required Dio dio}) {
-    _dio = dio;
+  HttpService() {
+    _dio = Dio();
     _dio.options.baseUrl = 'http://10.0.2.2:3000';
     _dio.interceptors.addAll([
       AuthInterceptor(),
