@@ -1,6 +1,5 @@
 import 'package:baskapp/core/data/repositories/auth_repository.dart';
 import 'package:baskapp/core/data/repositories/profile_repository.dart';
-import 'package:baskapp/core/data/services/http_service.dart';
 import 'package:baskapp/core/data/storage/app_store.dart';
 import 'package:baskapp/core/statics/app_routes.dart';
 import 'package:baskapp/modules/auth/auth_modules_route.dart';
