@@ -6,5 +6,5 @@ class AppStore {
 
   set setProfile(Profile profile) => _profile.value = profile;
 
-  get getProfile => _profile.value;
+  Profile? get getProfile => _profile.value;
 }
