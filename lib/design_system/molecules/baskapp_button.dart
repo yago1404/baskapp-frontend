@@ -56,7 +56,10 @@ class BaskappButton extends StatelessWidget {
                   height: 20,
                   child: CircularProgressIndicator(),
                 )
-                : BaskappText.bodyMedium(text, color: _fontColor),
+                : Padding(
+                  padding: EdgeInsets.symmetric(horizontal: BaskappSizes.medium),
+                  child: BaskappText.bodyMedium(text, color: _fontColor),
+                ),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:baskapp/design_system/atoms/baskapp_colors.dart';
 import 'package:baskapp/design_system/atoms/baskapp_text.dart';
-import 'package:baskapp/design_system/core/baskapp_sizes.dart';
+import 'package:baskapp/design_system/atoms/baskapp_sizes.dart';
 import 'package:flutter/material.dart';
 
 class BaskappMessageCard extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:baskapp/design_system/atoms/baskapp_input_mask.dart';
 import 'package:baskapp/design_system/atoms/baskapp_text.dart';
-import 'package:baskapp/design_system/core/baskapp_sizes.dart';
+import 'package:baskapp/design_system/atoms/baskapp_sizes.dart';
 import 'package:flutter/material.dart';
 
 class BaskappInputText extends StatelessWidget {

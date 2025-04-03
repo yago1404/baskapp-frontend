@@ -1,9 +1,7 @@
 library;
 
-// CORE
-export 'core/baskapp_sizes.dart';
-
 // ATOMS
+export 'atoms/baskapp_sizes.dart';
 export 'atoms/baskapp_colors.dart';
 export 'atoms/baskapp_text.dart';
 export 'atoms/baskapp_images.dart';
