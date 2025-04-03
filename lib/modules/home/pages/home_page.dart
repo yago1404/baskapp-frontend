@@ -1,6 +1,7 @@
 import 'package:baskapp/design_system/atoms/baskapp_colors.dart';
 import 'package:baskapp/design_system/atoms/baskapp_text.dart';
 import 'package:baskapp/modules/home/view_models/home_view_model.dart';
+import 'package:baskapp/modules/home/widgets/games_area.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: TabBarView(
           children: [
-            BaskappText.displayLarge('Jogos'),
+            GamesArea(),
             BaskappText.displayLarge('Times'),
             BaskappText.displayLarge('Jogadores'),
           ],
