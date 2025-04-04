@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class BaskappAvatar extends StatelessWidget {
   final String? imageUrl;
-  final String initials;
+  final String name;
 
-  const BaskappAvatar({super.key, required this.initials, this.imageUrl});
+  const BaskappAvatar({super.key, required this.name, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,25 @@ class BaskappAvatar extends StatelessWidget {
         color: BaskappColors.grey,
         shape: BoxShape.circle,
       ),
-      child: Center(child: BaskappText.titleLarge(initials)),
+      child: Center(
+        child:
+            imageUrl != null
+                ? Image.network(imageUrl!)
+                : BaskappText.titleLarge(
+                  _getInitials(name),
+                  fontWeight: FontWeight.bold,
+                ),
+      ),
     );
+  }
+
+  String _getInitials(String name) {
+    List<String> names = name.trim().split(' ');
+
+    if (names.length < 2) {
+      return names[0][0];
+    }
+
+    return names[0][0] + names[1][0];
   }
 }

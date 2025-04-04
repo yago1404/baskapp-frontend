@@ -6,12 +6,14 @@ export 'atoms/baskapp_colors.dart';
 export 'atoms/baskapp_text.dart';
 export 'atoms/baskapp_images.dart';
 export 'atoms/baskapp_input_mask.dart';
+export 'atoms/baskapp_avatar.dart';
 
 // MOLECULES
 export 'molecules/baskapp_input_text.dart';
 export 'molecules/baskapp_button.dart';
 export 'molecules/baskapp_message_card.dart';
 export 'molecules/baskapp_dropdown.dart';
+export 'molecules/baskapp_player_tile.dart';
 
 // ORGANISMS
 export 'organisms/baskapp_register_form.dart';

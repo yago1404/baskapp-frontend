@@ -83,7 +83,11 @@ class GamesArea extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemCount: 1000,
                           itemBuilder:
-                              (_, __) => BaskappText.bodyMedium('Teste'),
+                              (_, index) => BaskappPlayerTile(
+                                name: 'Yago Taveiros Ferreira',
+                                number: '24',
+                                points: '31',
+                              ),
                         ),
                       ),
                     ],
