@@ -7,6 +7,8 @@ export 'atoms/baskapp_text.dart';
 export 'atoms/baskapp_images.dart';
 export 'atoms/baskapp_input_mask.dart';
 export 'atoms/baskapp_avatar.dart';
+export 'atoms/baskapp_game.dart';
+export 'atoms/baskapp_player.dart';
 
 // MOLECULES
 export 'molecules/baskapp_input_text.dart';

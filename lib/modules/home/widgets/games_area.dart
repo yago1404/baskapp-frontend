@@ -30,7 +30,7 @@ class GamesArea extends StatelessWidget {
         ),
         SizedBox(height: BaskappSizes.medium),
         Expanded(
-          child: BaskappGamesTable(),
+          child: BaskappGamesTable(games: [],),
         ),
       ],
     );
