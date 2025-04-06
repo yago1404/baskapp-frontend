@@ -48,12 +48,14 @@ class BaskappGamesTable extends StatelessWidget {
                       children: [
                         BaskappText.bodyMedium(
                           '${games[indexGame].teamName} - ',
-                          color: BaskappColors.error,
+                          color:
+                              !_teamWon(indexGame) ? BaskappColors.error : null,
                           fontWeight: FontWeight.bold,
                         ),
                         BaskappText.bodyMedium(
                           games[indexGame].teamPoints.toString(),
-                          color: BaskappColors.error,
+                          color:
+                              !_teamWon(indexGame) ? BaskappColors.error : null,
                           fontWeight: FontWeight.bold,
                         ),
                       ],
@@ -63,10 +65,14 @@ class BaskappGamesTable extends StatelessWidget {
                       children: [
                         BaskappText.bodyMedium(
                           '${games[indexGame].rivalName} - ',
+                          color:
+                              _teamWon(indexGame) ? BaskappColors.error : null,
                           fontWeight: FontWeight.bold,
                         ),
                         BaskappText.bodyMedium(
                           games[indexGame].rivalPoints.toString(),
+                          color:
+                              _teamWon(indexGame) ? BaskappColors.error : null,
                           fontWeight: FontWeight.bold,
                         ),
                       ],
@@ -96,4 +102,7 @@ class BaskappGamesTable extends StatelessWidget {
           ),
     );
   }
+
+  bool _teamWon(int index) =>
+      games[index].teamPoints > games[index].rivalPoints;
 }
