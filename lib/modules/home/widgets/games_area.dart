@@ -30,7 +30,20 @@ class GamesArea extends StatelessWidget {
         ),
         SizedBox(height: BaskappSizes.medium),
         Expanded(
-          child: BaskappGamesTable(games: [],),
+          child: BaskappGamesTable(
+            games: [
+              BaskappGame(
+                gameId: 'ASDADASD',
+                teamName: 'Lakers',
+                rivalName: 'Celtics',
+                teamPoints: 113,
+                rivalPoints: 100,
+                players: [
+                  BaskappPlayer(name: 'Yago Taveiros', number: 12, points: 22),
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );

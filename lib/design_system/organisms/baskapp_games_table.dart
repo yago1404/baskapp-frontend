@@ -47,7 +47,7 @@ class BaskappGamesTable extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         BaskappText.bodyMedium(
-                          games[indexGame].teamName,
+                          '${games[indexGame].teamName} - ',
                           color: BaskappColors.error,
                           fontWeight: FontWeight.bold,
                         ),
@@ -62,7 +62,7 @@ class BaskappGamesTable extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         BaskappText.bodyMedium(
-                          games[indexGame].rivalName,
+                          '${games[indexGame].rivalName} - ',
                           fontWeight: FontWeight.bold,
                         ),
                         BaskappText.bodyMedium(
