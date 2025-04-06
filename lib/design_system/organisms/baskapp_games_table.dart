@@ -15,7 +15,7 @@ class BaskappGamesTable extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: BaskappSizes.common,
           children: [
-            Icon(Icons.mood_bad_outlined, size: 120, color: BaskappColors.grey),
+            Icon(Icons.save, size: 120, color: BaskappColors.grey),
             BaskappText.titleLarge(
               'Sem jogos registrados',
               color: BaskappColors.grey,
