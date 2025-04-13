@@ -1,3 +1,4 @@
+import 'package:baskapp/core/data/repositories/teams_repository.dart';
 import 'package:module_navigator/module_navigator.dart';
 
 import 'core/data/repositories/auth_repository.dart';
@@ -13,5 +14,8 @@ final List<Bind> initialBinds = [
   ),
   Bind<ProfileRepository>(
     (context) => ProfileRepository(service: context.get<HttpService>()),
+  ),
+  Bind<TeamsRepository>(
+    (context) => TeamsRepository(service: context.get<HttpService>()),
   ),
 ];

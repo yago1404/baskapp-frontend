@@ -1,9 +1,36 @@
+import 'package:baskapp/core/data/models/errors/rest_client_error.dart';
+import 'package:baskapp/core/data/repositories/teams_repository.dart';
 import 'package:baskapp/core/data/storage/app_store.dart';
+import 'package:baskapp/modules/home/states/teams_state.dart';
+import 'package:flutter/cupertino.dart';
+
+import '../../../core/data/models/team.dart';
 
 class HomeViewModel {
   final AppStore store;
+  final TeamsRepository teamsRepository;
 
-  HomeViewModel({required this.store});
+  HomeViewModel({required this.store, required this.teamsRepository});
+
+  final ValueNotifier<TeamsState> teamsState = ValueNotifier(
+    LoadedTeams(teams: []),
+  );
 
   String? get profileName => store.getProfile?.name;
+
+  Future<void> getMyTeams() async {
+    teamsState.value = LoadingTeams();
+    await Future.delayed(Duration(seconds: 2));
+    try {
+      List<Team> teams = await teamsRepository.getMyTeams();
+
+      teamsState.value = LoadedTeams(teams: teams);
+    } on RestClientError catch (e) {
+      teamsState.value = ErrorToLoadTeams(message: e.message);
+    } catch (_) {
+      teamsState.value = ErrorToLoadTeams(
+        message: 'Erro desconhecido ao recuperar os times',
+      );
+    }
+  }
 }
