@@ -38,7 +38,7 @@ class LoginViewModel {
       );
 
       Profile profile = await profileRepository.getProfile();
-      store.setProfile = profile;
+      store.profile = profile;
 
       loginState.value = InitialLoginState();
       onSuccess();

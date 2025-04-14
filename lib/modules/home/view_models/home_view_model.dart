@@ -16,18 +16,23 @@ class HomeViewModel {
     LoadedTeams(teams: []),
   );
 
-  String? get profileName => store.getProfile?.name;
+  String? get profileName => store.profile?.name;
 
   Future<void> getMyTeams() async {
     teamsState.value = LoadingTeams();
     await Future.delayed(Duration(seconds: 2));
     try {
       List<Team> teams = await teamsRepository.getMyTeams();
+      store.teams = teams;
 
       teamsState.value = LoadedTeams(teams: teams);
     } on RestClientError catch (e) {
+      if (e.statusCode == 404) {
+        teamsState.value = LoadedTeams(teams: []);
+        return;
+      }
       teamsState.value = ErrorToLoadTeams(message: e.message);
-    } catch (_) {
+    } catch (e) {
       teamsState.value = ErrorToLoadTeams(
         message: 'Erro desconhecido ao recuperar os times',
       );

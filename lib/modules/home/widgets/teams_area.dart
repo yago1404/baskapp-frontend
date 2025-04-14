@@ -14,7 +14,7 @@ class TeamsArea extends StatefulWidget {
 
 class _TeamsAreaState extends State<TeamsArea> {
   final _searchController = TextEditingController();
-  int? _selectedTeam;
+  String? _selectedTeam;
 
   @override
   void initState() {
@@ -28,57 +28,82 @@ class _TeamsAreaState extends State<TeamsArea> {
       valueListenable: widget.viewModel.teamsState,
       builder: (_, state, __) {
         if (state is LoadingTeams) {
+          return Center(child: CircularProgressIndicator());
+        }
+
+        if (state is ErrorToLoadTeams) {
           return Center(
-            child: CircularProgressIndicator(),
+            child: BaskappText.titleLarge(
+              state.message,
+              color: BaskappColors.error,
+            ),
           );
         }
 
-        return Row(
-          children: [
-            Flexible(
-              flex: 1,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: BaskappSizes.medium,
-                      horizontal: BaskappSizes.small,
+        if (state is LoadedTeams) {
+          if (state.teams.isEmpty) {
+            return Center(
+              child: BaskappButton('Crie seu primeiro time', onPressed: () {}),
+            );
+          }
+
+          return Row(
+            children: [
+              Flexible(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: BaskappSizes.medium,
+                        horizontal: BaskappSizes.small,
+                      ),
+                      child: BaskappInputText(
+                        controller: _searchController,
+                        label: 'Pesquise pelo time',
+                      ),
                     ),
-                    child: BaskappInputText(
-                      controller: _searchController,
-                      label: 'Pesquise pelo time',
-                    ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: 4,
-                      itemBuilder:
-                          (_, index) => InkWell(
-                            onTap:
-                                () => setState(() {
-                                  _selectedTeam = index;
-                                }),
-                            child: Container(
-                              color:
-                                  index == _selectedTeam
-                                      ? BaskappColors.white
-                                      : Colors.transparent,
-                              child: ListTile(
-                                leading: BaskappAvatar(name: 'Lakers'),
-                                title: BaskappText.titleMedium('Lakers'),
-                                subtitle: BaskappText.bodyMedium('12 atletas'),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: state.teams.length,
+                        itemBuilder:
+                            (_, index) => InkWell(
+                              onTap:
+                                  () => setState(() {
+                                    _selectedTeam = state.teams[index].id;
+                                  }),
+                              child: Container(
+                                color:
+                                    state.teams[index].id == _selectedTeam
+                                        ? BaskappColors.white
+                                        : Colors.transparent,
+                                child: ListTile(
+                                  leading: BaskappAvatar(
+                                    name: state.teams[index].name ?? 'Sem nome',
+                                  ),
+                                  title: BaskappText.titleMedium(
+                                    state.teams[index].name ?? 'Sem nome',
+                                  ),
+                                  subtitle: BaskappText.bodyMedium(
+                                    state.teams[index].players?.length
+                                            .toString() ??
+                                        '0',
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Flexible(flex: 3, child: Container(color: BaskappColors.white)),
-          ],
-        );
-      }
+              Flexible(flex: 3, child: Container(color: BaskappColors.white)),
+            ],
+          );
+        }
+
+        return SizedBox();
+      },
     );
   }
 }

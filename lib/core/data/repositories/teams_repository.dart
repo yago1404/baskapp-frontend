@@ -11,7 +11,7 @@ class TeamsRepository {
 
     List<Team> teams = [];
 
-    for (var team in response['data']) {
+    for (var team in response['data']['teams']) {
       teams.add(Team.fromJson(team));
     }
 
