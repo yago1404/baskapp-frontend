@@ -19,6 +19,11 @@ class HomeViewModel {
   String? get profileName => store.profile?.name;
 
   Future<void> getMyTeams() async {
+    if (store.teams.isNotEmpty) {
+      teamsState.value = LoadedTeams(teams: store.teams);
+      return;
+    }
+
     teamsState.value = LoadingTeams();
     await Future.delayed(Duration(seconds: 2));
     try {
@@ -31,6 +36,7 @@ class HomeViewModel {
         teamsState.value = LoadedTeams(teams: []);
         return;
       }
+
       teamsState.value = ErrorToLoadTeams(message: e.message);
     } catch (e) {
       teamsState.value = ErrorToLoadTeams(

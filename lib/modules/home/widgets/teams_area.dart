@@ -97,7 +97,41 @@ class _TeamsAreaState extends State<TeamsArea> {
                   ],
                 ),
               ),
-              Flexible(flex: 3, child: Container(color: BaskappColors.white)),
+              Flexible(
+                flex: 3,
+                child: Container(
+                  color: BaskappColors.white,
+                  child:
+                      _selectedTeam != null
+                          ? GridView.count(
+                            crossAxisCount: 4,
+                            children:
+                                state.teams
+                                        .firstWhere(
+                                          (team) => team.id == _selectedTeam,
+                                        )
+                                        .players!
+                                        .map(
+                                          (player) => Card(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                BaskappAvatar(
+                                                  name: player.name!,
+                                                ),
+                                                BaskappText.titleLarge(
+                                                  player.name!,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                        .toList()
+                                    as List<Widget>,
+                          )
+                          : SizedBox(),
+                ),
+              ),
             ],
           );
         }
