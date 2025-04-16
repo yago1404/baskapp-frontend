@@ -25,7 +25,6 @@ class HomeViewModel {
     }
 
     teamsState.value = LoadingTeams();
-    await Future.delayed(Duration(seconds: 2));
     try {
       List<Team> teams = await teamsRepository.getMyTeams();
       store.teams = teams;
