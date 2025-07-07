@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: BaskappColors.primary,
@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
             tabs: [
               BaskappText.bodyLarge('Jogos', color: BaskappColors.white),
               BaskappText.bodyLarge('Times', color: BaskappColors.white),
-              BaskappText.bodyLarge('Jogadores', color: BaskappColors.white),
             ],
             indicator: BoxDecoration(
               border: Border(
@@ -44,7 +43,6 @@ class _HomePageState extends State<HomePage> {
           children: [
             GamesArea(),
             TeamsArea(viewModel: widget.viewModel),
-            BaskappText.displayLarge('Jogadores'),
           ],
         ),
       ),
