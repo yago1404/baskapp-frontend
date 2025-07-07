@@ -89,7 +89,7 @@ class _TeamsAreaState extends State<TeamsArea> {
                               (team) => team.id == _selectedTeam,
                             ),
                           )
-                          : SizedBox(),
+                          : _unselectedTeamMessage(),
                 ),
               ),
             ],
@@ -98,6 +98,31 @@ class _TeamsAreaState extends State<TeamsArea> {
 
         return SizedBox();
       },
+    );
+  }
+
+  _unselectedTeamMessage() {
+    return Container(
+      color: BaskappColors.lightGrey,
+      width: double.infinity,
+      height: double.infinity,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: BaskappSizes.small,
+          children: [
+            Icon(
+              Icons.people_alt_outlined,
+              size: 32,
+              color: BaskappColors.grey,
+            ),
+            BaskappText.titleLarge(
+              'Selecione um time',
+              color: BaskappColors.grey,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
