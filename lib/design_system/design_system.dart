@@ -20,5 +20,6 @@ export 'molecules/baskapp_player_tile.dart';
 // ORGANISMS
 export 'organisms/baskapp_register_form.dart';
 export 'organisms/baskapp_login_form.dart';
+export 'organisms/players_grid.dart';
 
 // TEMPLATES

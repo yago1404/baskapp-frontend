@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/data/models/team.dart';
-import '../../../design_system/design_system.dart';
+import '../../core/data/models/team.dart';
+import '../design_system.dart';
 
 class PlayersGrid extends StatelessWidget {
   final Team team;

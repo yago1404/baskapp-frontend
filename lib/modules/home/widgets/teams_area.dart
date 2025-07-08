@@ -1,7 +1,6 @@
 import 'package:baskapp/design_system/design_system.dart';
 import 'package:baskapp/modules/home/states/teams_state.dart';
 import 'package:baskapp/modules/home/view_models/home_view_model.dart';
-import 'package:baskapp/modules/home/widgets/players_grid.dart';
 import 'package:baskapp/modules/home/widgets/teams_list.dart';
 import 'package:flutter/material.dart';
 
